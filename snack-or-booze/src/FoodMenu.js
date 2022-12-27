@@ -11,6 +11,15 @@ import {
 } from "reactstrap";
 
 function FoodMenu({ snacks, drinks }) {
+  let items;
+  let source;
+  if (snacks) {
+    items = snacks;
+    source = 'Snacks';
+  } else {
+    items = drinks;
+    source = 'Drinks';
+  }
 
   return (
     <section className="col-md-4">
@@ -24,9 +33,9 @@ function FoodMenu({ snacks, drinks }) {
             bulk of the card's content.
           </CardText>
           <ListGroup>
-            {snacks.map(snack => (
-              <Link to={`/snacks/${snack.id}`} key={snack.id}>
-                <ListGroupItem>{snack.name}</ListGroupItem>
+            {items.map(item => (
+              <Link to={`/${source}/${item.id}`} key={item.id}>
+                <ListGroupItem>{item.name}</ListGroupItem>
               </Link>
             ))}
           </ListGroup>
