@@ -10,6 +10,7 @@ function Home({ snacks, drinks }) {
             <h3 className="font-weight-bold">
               Welcome to Silicon Valley's premier dive cafe!
             </h3>
+            {/* added in the number of drinks / snacks available */}
             <p>We have a limited selection of Snacks: {snacks.length} and Drinks: {drinks.length}</p>
           </CardTitle>
         </CardBody>

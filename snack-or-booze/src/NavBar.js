@@ -15,8 +15,13 @@ function NavBar() {
           <NavItem>
             <NavLink to="/snacks">Snacks</NavLink>
           </NavItem>
+          {/* added drinks to navbar */}
           <NavItem>
             <NavLink to="/drinks">Drinks</NavLink>
+          </NavItem>
+          {/* added add to navbar */}
+          <NavItem>
+            <NavLink to="/add">Add Item</NavLink>
           </NavItem>
         </Nav>
       </Navbar>

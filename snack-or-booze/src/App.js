@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import Home from "./Home";
+import Add from './Add';
 import SnackOrBoozeApi from "./Api";
 import NavBar from "./NavBar";
 import { Route, Switch } from "react-router-dom";
@@ -50,11 +51,15 @@ function App() {
             <Route path="/snacks/:id">
               <Snack items={snacks} cantFind="/snacks" />
             </Route>
+            {/* added in routes for drinks */}
             <Route exact path="/drinks">
               <Menu drinks={drinks} title="Snacks" />
             </Route>
             <Route exact path="/drinks/:id">
               <Snack items={drinks} cantFind="/drinks" />
+            </Route>
+            <Route exact path="/add">
+              <Add />
             </Route>
             <Route>
               <p>Hmmm. I can't seem to find what you want.</p>

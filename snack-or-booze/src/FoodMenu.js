@@ -11,6 +11,7 @@ import {
 } from "reactstrap";
 
 function FoodMenu({ snacks, drinks }) {
+  // checking for snacks or drinks instead of creating an entire new component for each.
   let items;
   let source;
   if (snacks) {
