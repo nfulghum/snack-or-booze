@@ -10,7 +10,8 @@ import {
   ListGroupItem
 } from "reactstrap";
 
-function FoodMenu({ snacks }) {
+function FoodMenu({ snacks, drinks }) {
+
   return (
     <section className="col-md-4">
       <Card>

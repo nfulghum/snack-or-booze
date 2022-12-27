@@ -16,6 +16,12 @@ class SnackOrBoozeApi {
     return result.data;
   }
 
+  // added function to get drinks from backend api
+  static async getDrinks() {
+    const result = await axios.get(`${BASE_API_URL}/drinks`);
+    return result.data;
+  }
+
 }
 
 export default SnackOrBoozeApi;
