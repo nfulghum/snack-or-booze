@@ -1,52 +1,87 @@
 import React, { useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
 
-const AddForm = ({ setData }) => {
+const AddForm = ({ add }) => {
     const initialState = {
-        item: "",
-        name: ""
+        name: "",
+        serve: "",
+        description: "",
+        recipe: "",
     }
-
     const [formData, setFormData] = useState(initialState);
-    const [item, setItem] = useState('Food');
+    const { type } = useParams();
+
 
     const handleChange = (e) => {
         const { name, value } = e.target
         setFormData(fd => ({
             ...fd,
             [name]: value,
-            item: item
-        }))
+        }));
     }
 
-    const test = () => {
-        const sel = document.getElementById('item');
-        console.log(sel.value)
-        setItem(sel.value);
-    }
-
-    const setDataForParent = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(e);
-        setData(formData);
+        add(formData, type)
+        setFormData(initialState);
     }
 
     return (
-        <form onSubmit={setDataForParent}>
-            <label htmlFor="item">Food or Drink</label>
-            <select onChange={test} id="item" name="item">
-                <option value="food">Food</option>
-                <option value="drink">Drink</option>
-            </select>
+        <div>
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label htmlFor="name">Name</label>
+                    <input
+                        onChange={handleChange}
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        id="name"
+                    />
+                </div>
+                <div>
+                    <label htmlFor="serve">Serve</label>
+                    <input
+                        onChange={handleChange}
+                        type="text"
+                        name="serve"
+                        id="serve"
+                        value={formData.serve}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="description">Description</label>
+                    <input
+                        onChange={handleChange}
+                        type="text"
+                        name="description"
+                        value={formData.description}
+                        id="description"
+                    />
+                </div>
 
-            <br />
-
-            <label htmlFor="name">Item Name</label>
-            <input type="text" onChange={handleChange} id="name" name="name" value={formData.name} />
-
-            <br />
-
-            <button>Add Item</button>
-        </form>
+                <div>
+                    <label htmlFor="recipe">Recipe</label>
+                    <input
+                        onChange={handleChange}
+                        type="text"
+                        name="recipe"
+                        value={formData.recipe}
+                        id="recipe"
+                    />
+                </div>
+                <button
+                    id="newItemButton"
+                    type="submit"
+                    onClick={() => alert("sucessfully added!")}
+                >
+                    Add a new {type}!
+                </button>
+                <button>
+                    <Link to={`/${type}`}>back!</Link>
+                </button>
+            </form>
+        </div>
     )
 }
 

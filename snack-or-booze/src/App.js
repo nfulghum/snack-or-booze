@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import Home from "./Home";
-import Add from './Add';
+import AddForm from './AddForm';
 import SnackOrBoozeApi from "./Api";
 import NavBar from "./NavBar";
 import { Route, Switch } from "react-router-dom";
 import Menu from "./FoodMenu";
 import Snack from "./FoodItem";
+import { v4 as uuid } from 'uuid';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -31,6 +32,16 @@ function App() {
     }
     getDrinks();
   }, []);
+
+  const add = (formData, type) => {
+    if (type === "snacks") {
+      setSnacks((snacks) => [...snacks, { ...formData, id: uuid() }]);
+    } else {
+      setDrinks((drinks) => [...drinks, { ...formData, id: uuid() }]);
+    }
+  };
+
+
 
   if (isLoading) {
     return <p>Loading &hellip;</p>;
@@ -58,8 +69,8 @@ function App() {
             <Route exact path="/drinks/:id">
               <Snack items={drinks} cantFind="/drinks" />
             </Route>
-            <Route exact path="/add">
-              <Add />
+            <Route exact path="/add/:type/new">
+              <AddForm add={add} />
             </Route>
             <Route>
               <p>Hmmm. I can't seem to find what you want.</p>
