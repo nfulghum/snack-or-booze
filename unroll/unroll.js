@@ -7,7 +7,7 @@ const square = [
 
 
 const unroll = (squareArray, arr = []) => {
-    // remove the first row from the array and place in new array and refactor squareArray
+    // remove the first row from the array and place in new array
     // 1,2,3,4 // 6, 7
     for (let i = 0; i < squareArray.length; i++) {
         arr.push(squareArray[0][i])
