@@ -64,7 +64,7 @@ function App() {
             </Route>
             {/* added in routes for drinks */}
             <Route exact path="/drinks">
-              <Menu drinks={drinks} title="Snacks" />
+              <Menu drinks={drinks} title="Drinks" />
             </Route>
             <Route exact path="/drinks/:id">
               <Snack items={drinks} cantFind="/drinks" />
